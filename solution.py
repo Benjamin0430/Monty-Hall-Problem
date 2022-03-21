@@ -7,7 +7,7 @@ import random
 # 4) Player makes final decision a) stay with original choice b) switch to the other one
 
 # Function Define:
-# Parameter: True for staying, false for switching
+# Parameter: True for switching, false for staying. Default to stay.
 # output: 1 for pick is the prize, 0 if not
 
 def pick(switch = False):
