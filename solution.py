@@ -1,4 +1,4 @@
-import random
+import random # import random to generate randomness
 
 # Mounty Hall Definition:
 # 1) A door set of size 3, one of them is the prize
@@ -16,7 +16,7 @@ def pick(switch = False):
     pick = random.randint(1, 3) # Set one of the door as the player's pick
     reveal = random.choice([n for n in options if ((n != prize) & (n != pick))]) # Host reveal a door other than the prize and the player's pick
     if (switch): # if the player decide to switch to the other choice
-        pick = random.choice([n for n in options if ((n != pick) & (n != reveal))]) # switch the player's pick to the other choice
+        pick = [n for n in options if ((n != pick) & (n != reveal))][0] # switch the player's pick to the other choice
     if (pick == prize): # if the final pick is the prize
         return 1
     return 0 # if the final pick is not the prize
@@ -28,5 +28,5 @@ for i in range (0,5000): # repeat the experiment 5000 time
     switch += pick(True) # keep track of the number of success if switch
 P_stay = stay/5000 * 100 # success rate if not switch
 P_switch = switch/5000 * 100 # success rate if switch
-print("You will have " + str(P_stay) + "% chance of winning if staying with original choice.") # 33.68%
-print("You will have " + str(P_switch) +  "% chance of winning if switching to the other choice.") # 66.68%
+print("You will have " + str(P_stay) + "% chance of winning if staying with original choice.") # ie: 33.68%
+print("You will have " + str(P_switch) +  "% chance of winning if switching to the other choice.") # ie: 66.68%
