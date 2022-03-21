@@ -1,5 +1,4 @@
-import numpy as np
-from numpy import random
+import random
 
 # Mounty Hall Definition:
 # 1) A door set of size 3, one of them is the prize
@@ -12,12 +11,12 @@ from numpy import random
 # output: 1 for pick is the prize, 0 if not
 
 def pick(switch = False):
-    options = np.arange(1, 3 + 1, 1) # A set of all possible choices for doors
-    prize = random.randint(1, 3 + 1) # Set one of the door as the prize's door
-    pick = random.randint(1, 3 + 1) # Set one of the door as the player's pick
-    reveal = random.choice(options[(options != prize) & (options != pick)]) # Host reveal a door other than the prize and the player's pick
+    options = list(range(1, 3 + 1)) # A set of all possible choices for doors
+    prize = random.randint(1, 3) # Set one of the door as the prize's door
+    pick = random.randint(1, 3) # Set one of the door as the player's pick
+    reveal = random.choice([n for n in options if ((n != prize) & (n != pick))]) # Host reveal a door other than the prize and the player's pick
     if (switch): # if the player decide to switch to the other choice
-        pick = random.choice(options[(options != pick) & (options != reveal)]) # switch the player's pick to the other choice
+        pick = random.choice([n for n in options if ((n != pick) & (n != reveal))]) # switch the player's pick to the other choice
     if (pick == prize): # if the final pick is the prize
         return 1
     return 0 # if the final pick is not the prize
