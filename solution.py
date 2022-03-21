@@ -22,7 +22,7 @@ def pick(switch = False):
         return 1
     return 0 # if the final pick is not the prize
     
-stay = 0; # cumulative success if the player decide to stay with the original choice
+stay = 0 # cumulative success if the player decide to stay with the original choice
 switch = 0 # cumulative success if the player decide to switch to another choice
 for i in range (0,5000): # repeat the experiment 5000 time
     stay += pick() # keep track of the number of success if not switch
